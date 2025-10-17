@@ -11,7 +11,7 @@ interface Props {
 
 const { Search } = Input;
 
-const ListSearch: FC<Props> = memo((props) => {
+const ListSearch: FC<Props> = memo(() => {
   const nav = useNavigate();
   const { pathname } = useLocation();
   const [searchParams] = useSearchParams();

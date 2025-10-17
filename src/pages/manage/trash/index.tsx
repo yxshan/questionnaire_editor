@@ -27,7 +27,7 @@ interface IQuestionItem {
 const { Title } = Typography;
 const { confirm } = Modal;
 
-const Trash: FC<Props> = memo((props) => {
+const Trash: FC<Props> = memo(() => {
   useTitle('小慕问卷 - 回收站');
 
   const { data = {}, loading, refresh } = useLoadQuestionListData({ isDeleted: true });

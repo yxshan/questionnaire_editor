@@ -14,7 +14,7 @@ interface Props {
 
 const { Title } = Typography;
 
-const Logo: FC<Props> = memo((props) => {
+const Logo: FC<Props> = memo(() => {
   const { username } = useGetUserInfo();
 
   const [pathname, setPathname] = useState(HOME_PATHNAME);
