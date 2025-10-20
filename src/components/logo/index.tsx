@@ -2,11 +2,12 @@ import { FormOutlined } from '@ant-design/icons';
 import { Space, Typography } from 'antd';
 import { memo, useEffect, useState } from 'react';
 import type { FC, ReactNode } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 
 import styles from './index.module.scss';
 import useGetUserInfo from '@/hooks/useGetUserInfo';
 import { HOME_PATHNAME, MANAGE_INDEX_PATHNAME } from '@/router';
+import { getToken } from '@/utils/user-token';
 
 interface Props {
   children?: ReactNode;
@@ -16,14 +17,17 @@ const { Title } = Typography;
 
 const Logo: FC<Props> = memo(() => {
   const { username } = useGetUserInfo();
-
   const [pathname, setPathname] = useState(HOME_PATHNAME);
+  const location = useLocation(); 
 
   useEffect(() => {
-    if (username) {
+    const token = getToken();
+    if (username && token) {
       setPathname(MANAGE_INDEX_PATHNAME);
+    } else {
+      setPathname(HOME_PATHNAME);
     }
-  }, [username]);
+  }, [username, location]);
 
   return (
     <div className={styles.container}>
