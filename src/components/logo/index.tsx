@@ -18,7 +18,7 @@ const { Title } = Typography;
 const Logo: FC<Props> = memo(() => {
   const { username } = useGetUserInfo();
   const [pathname, setPathname] = useState(HOME_PATHNAME);
-  const location = useLocation(); 
+  const location = useLocation();
 
   useEffect(() => {
     const token = getToken();
